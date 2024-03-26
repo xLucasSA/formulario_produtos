@@ -1,7 +1,6 @@
 :root {
     --comprimento-tela: 95%
 }
-   
 
 #tabela-produtos {
     width: var(--comprimento-tela);
@@ -34,9 +33,13 @@
     width: 30px;
 }
 
+.disponiveis {
+    width: 18px;
+    margin: auto
+}
+
 .icones {
     width: 18px;
-    margin: 0 10%;
 }
 
 table {
@@ -120,4 +123,10 @@ form .btn {
     width: 20%;
     max-width: 300px;
     align-self: flex-end;
+}
+
+@media screen and (max-width:600px) {
+    #botoes {
+        justify-content: center;
+    }
 }

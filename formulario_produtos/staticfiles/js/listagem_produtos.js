@@ -13,10 +13,10 @@ $(document).ready(function() {
         const erros = validarForm();
 
         if (erros.length > 0) {
-            $('#errors').empty();
+            $('#erros').empty();
             
             erros.forEach(function(error) {
-                $('#errors').append('<div class="alert alert-danger">' + error + '</div>');
+                $('#erros').append('<div class="alert alert-danger">' + error + '</div>');
             });
         } 
         else {
