@@ -26,9 +26,10 @@ class FiltroProduto(forms.ModelForm):
     
     class Meta:
         model = Produto
-        fields = ['nome']
+        fields = ['nome', 'disponivel']
         labels = {
-            'nome': 'Nome'
+            'nome': 'Nome',
+            'disponivel': 'Disponibilidade'
         }
 
     def __init__(self, *args, **kwargs):

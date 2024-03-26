@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} <title>Produtos</title>{% endblock %}
+
+{% block styles %} 
+
+    <link href="{% static 'css/visualiza_produto.css' %}" type="text/css" rel="stylesheet" />
+
+{% endblock %}
+
+
+{% block content %} 
+
+<div id="erros"></div>
+<div class="card">
+  <div class="card-header">
+    <a href="{% url "listar_produtos" %}">
+      <img class="icones" src={% static "img/icons/arrow-left.png" %} />
+    </a>
+    <ul class="nav nav-tabs card-header-tabs" id="nav-menu">
+      <li class="nav-item">
+          {% if "alterar" in request.path %}
+            <a class="nav-link" aria-current="true" href="{% url "visualizar_produto" id %}"><img class="icones" src={% static "img/icons/eye-fill.png" %} /></a>
+          {% else %}
+            <a class="nav-link active" aria-current="true" href="{% url "visualizar_produto" id %}"><img class="icones" src={% static "img/icons/eye-fill.png" %} /></a>
+          {% endif %}
+      </li>
+      <li class="nav-item">
+        {% if "alterar" in request.path %}
+          <a class="nav-link active" href="{% url "alterar_produto" id %}"><img class="icones" src={% static "img/icons/pencil-fill.png" %} /></a>
+        {% else %}
+          <a class="nav-link" href="{% url "alterar_produto" id %}"><img class="icones" src={% static "img/icons/pencil-fill.png" %} /></a>
+        {% endif %}
+      </li>
+    </ul>
+    <img class="icones" id="lixeira" onclick="confirmarDelecao()" src={% static "img/icons/trash-fill.png" %}/>
+  </div>
+  <div class="card-body">
+    <form method="post" action="{% url 'alterar_produto' id %}" id="form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      {% if "alterar" in request.path %}
+        <div class="botao-cadastro">
+          <button type="submit" class="btn btn-success" >
+            Alterar
+          </button>
+        </div>
+      {% endif %}
+    </form>
+  </div>
+</div>
+
+<script>
+  function confirmarDelecao() {
+    let confirmacao = confirm("Deseja deletar este registro?");
+    
+    if (confirmacao) {
+        window.location.href = "{% url 'deletar_produto' id %}";
+    }
+  }
+</script>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static "js/listagem_produtos.js" %}"></script>
+{% endblock %}

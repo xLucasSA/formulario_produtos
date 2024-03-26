@@ -1,0 +1,28 @@
+#form {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.icones {
+    width: 18px;
+}
+
+#form .botoes {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px; 
+}
+
+@media screen and (max-width: 1200px) {
+    #form {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #form {
+        width: 80%;
+    }
+}

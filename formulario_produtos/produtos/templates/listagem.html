@@ -40,6 +40,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Valor</th>
+                    <th scope="col">Disponível</th>
                     <th scope="col">Opções</th>
                 </tr>
             </thead>
@@ -50,8 +51,15 @@
                         <th scope="row">{% calcular_indice forloop.counter pagina paginador %}</th>
                         <td class="coluna-centralizada">{{item.nome}}</td>
                         <td class="coluna-centralizada">{{item.valor}}</td>
+                        <td class="coluna-centralizada">
+                            {% if item.disponivel %}
+                                <img class="disponiveis" src={% static "img/icons/check2.png" %} title="Visualizar Registro">
+                            {% else %}
+                                <img class="disponiveis" src={% static "img/icons/x-lg.png" %} title="Visualizar Registro">
+                            {% endif %}
+                        </td>
                         <td class="coluna-centralizada" >
-                            <a href="{% url "vizualizar_produto" item.id %}">
+                            <a href="{% url "visualizar_produto" item.id %}">
                                 <img class="icones" src={% static "img/icons/eye-fill.png" %} title="Visualizar Registro">
                             </a>
                         </td>

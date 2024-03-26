@@ -17,5 +17,14 @@ class Produto(models.Model):
         
         if self.valor < 0:
             return
+        
+        if not self.nome:
+            return
+        
+        if not self.descricao:
+            return
+        
+        if type(self.disponivel) != bool:
+            return
            
         super().save(*args, **kwargs)

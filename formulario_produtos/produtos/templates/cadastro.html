@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} <title>Produtos</title>{% endblock %}
+
+{% block styles %} 
+
+    <link href="{% static 'css/cadastro.css' %}" type="text/css" rel="stylesheet" />
+
+{% endblock %}
+
+{% block content %} 
+
+    <div id="erros"></div>
+
+    <form method="post" action="{% url 'cadastrar_produto' %}" id="form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="botoes">
+            <a href="{% url "listar_produtos" %}">
+                <button type="button" class="btn btn-primary">
+                    <img class="icones" src={% static "img/icons/arrow-left white.png" %} />
+                </button>
+            </a>
+            <button type="submit" class="btn btn-success" >
+                <img class="icones" src={% static "img/icons/pencil-fill white.png" %} />
+                Cadastrar
+            </button>
+        </div>   
+    </form>
+
+{% endblock %}
+
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static "js/listagem_produtos.js" %}"></script>
+{% endblock %}

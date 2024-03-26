@@ -1,8 +1,11 @@
-#cashback-form {
+.card {
+    width: 50%;
+}
+
+#form {
     width: 100%;
-    display: grid;
-    grid-template-columns: 2fr 2fr;
-    grid-column-gap: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .card-header {
@@ -30,4 +33,14 @@
 .botao-cadastro{
     grid-column-start: 2;
     text-align: end;
+}
+
+@media screen and (max-width: 800px) {
+    .card {
+        width: 80%;
+    }
+
+    #nav-menu {
+        flex-wrap: nowrap;
+    }
 }
