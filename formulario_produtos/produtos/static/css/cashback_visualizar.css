@@ -1,0 +1,33 @@
+#cashback-form {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-column-gap: 1rem;
+}
+
+.card-header {
+    display: grid;
+    grid-template-columns: 1.12fr 0.88fr 1fr;
+    align-items: center;
+}
+
+#lixeira {
+    justify-self: end;
+}
+
+.card-header-tabs {
+    justify-content: center;
+}
+
+.icones {
+    width: 25px;
+}
+
+.icones:hover {
+    cursor: pointer;
+}
+
+.botao-cadastro{
+    grid-column-start: 2;
+    text-align: end;
+}

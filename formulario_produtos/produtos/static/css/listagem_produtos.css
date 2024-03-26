@@ -1,0 +1,123 @@
+:root {
+    --comprimento-tela: 95%
+}
+   
+
+#tabela-produtos {
+    width: var(--comprimento-tela);
+    display: flex;
+    flex-direction: column;
+}
+
+#botoes {
+    width: var(--comprimento-tela);
+    margin-top: 3%;
+    margin-bottom: 3%;
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+}
+
+#botoes button {
+    z-index: 1;
+}
+
+#novo-registro {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    width: 140px;
+}
+
+#novo-registro img, #excel-download img {
+    width: 30px;
+}
+
+.icones {
+    width: 18px;
+    margin: 0 10%;
+}
+
+table {
+    z-index: 1;
+}
+
+table th, .coluna-centralizada {
+    text-align: center;
+}
+
+table tr {
+    vertical-align: middle;
+}
+
+table a {
+    text-decoration: none;
+}
+
+#filtros {
+    width: var(--comprimento-tela);
+    margin: 15px;
+    z-index: 0;
+}
+
+.flag-filtros {
+    margin: 0;
+    transition: all 0.5s;
+}
+
+.flag-filtros-rotate {
+    rotate: 180deg;
+    transition: all 0.5s;
+}
+
+#filtros .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    padding: 10px;
+    background-color: white;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    cursor: pointer;
+}
+
+#filtros form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#filtros .form-itens {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+
+#filtros .form-floating{
+    max-width: 49%;
+    width: 300px;
+    margin: 0 1%;
+}
+.body {
+    background-color: rgb(255, 255, 255, 0.5);
+    opacity: 1;
+    max-height: 500px;
+    transition: max-height 0.2s, opacity 0.5s ease-in-out;
+    padding: 2%;
+}
+
+.filtro-body-hidden {
+    opacity: 0;
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+form .btn {
+    width: 20%;
+    max-width: 300px;
+    align-self: flex-end;
+}

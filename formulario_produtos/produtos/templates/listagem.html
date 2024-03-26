@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load static %}
+{% load calcula_indice %}
+
+{% block title %}
+    <title>Produtos</title>
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href={% static "css/listagem_produtos.css" %}>
+{% endblock %}
+
+
+{% block content %}
+
+    <div id="filtros">
+        <div class="header" onclick="modificarFiltros()">
+            <h6>Filtros</h6>
+            <img class="icones flag-filtros" id="flag-rotate" src={% static "img/icons/arrow-down.png" %}>
+        </div>
+        <div class="body filtro-body-hidden" id="filtro-body">
+            <form method="GET" action="{% url "listar_produtos" %}" id="filtro-formulario">
+                <div class="form-itens">
+                    {% for campo in form %}
+                        <div class="form-floating mb-3">
+                            {{campo}}
+                            <label>{{ campo.label }}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+                <button class="btn btn-primary" type="submit">Filtrar</button>
+            </form> 
+        </div>
+    </div>
+    
+    <div id="tabela-produtos">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Opções</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                    
+                {% for item in pagina %}
+                    <tr>
+                        <th scope="row">{% calcular_indice forloop.counter pagina paginador %}</th>
+                        <td class="coluna-centralizada">{{item.nome}}</td>
+                        <td class="coluna-centralizada">{{item.valor}}</td>
+                        <td class="coluna-centralizada" >
+                            <a href="{% url "vizualizar_produto" item.id %}">
+                                <img class="icones" src={% static "img/icons/eye-fill.png" %} title="Visualizar Registro">
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% include "paginacao.html" %}
+    
+    <div id="botoes">
+        <button type="button" class="btn btn-primary">
+            <a id="excel-download" onclick="exportarParaExcel()">
+                <img src={% static "img/icons/filetype-xlsx white.png" %} />
+            </a>
+        </button>
+        <button type="button" class="btn btn-success">
+            <a id="novo-registro" href="{% url "cadastrar_produto" %}">
+                <img src={% static "img/icons/plus.png" %} />Novo Produto
+            </a>
+        </button>
+    </div>
+
+    <script>
+        function exportarParaExcel() {
+            let url = '{% url "exportar_excel" %}?';
+            let form = document.getElementById('filtro-formulario');
+            let filtro = new FormData(form);
+            for (let [chave, valor] of filtro.entries()) {
+                url += chave + '=' + encodeURIComponent(valor) + '&';
+            }
+            
+            window.location.href = url;
+        }
+
+        document.getElementById('excel-download').addEventListener('click', function() {
+            document.getElementById('excel-download').setAttribute('disabled', 'disabled');
+            setTimeout(function() {
+                document.getElementById('excel-download').removeAttribute('disabled');
+            }, 5000);
+        });
+    </script>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static "js/listagem_produtos.js" %}"></script>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block tittle %}
+    <title>Erro</tittle>
+{% endblock %}
+
+{% block styles %}
+    <link href="{% static 'siteApp/css/erro-404.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    <div id="erro404">
+        <h1 class="text-center text-danger mt-5">Erro!</h1>
+        <p class="text-center">Houve um erro interno no servidor. Tente novamente mais tarde! Se persistirem os problemas entre em contato com o suporte</p>
+        <a href="/" class="btn btn-primary my-3">Voltar para o início</a>
+    </div>
+{% endblock  %}
